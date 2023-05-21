@@ -33,9 +33,9 @@ function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
 }
 
 return (
-  <div className="container">
+  <div>
     <h1>Schreibe deinen Kommentar hier und lasse diesen durch die KI anpassen.</h1>
-    <form className="our-form" onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <Textarea onChange={handleChange} rows={10} value={prompt} />
       <RadioGroup 
         options={[
@@ -60,7 +60,7 @@ return (
 
     {isLoading && <Loader />}
 
-    <div className="answer-area">{answer}</div>
+    <div className="answer-area mt-8">{answer}</div>
   </div>
 )
 }
