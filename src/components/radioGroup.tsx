@@ -10,7 +10,6 @@ type RadioGroupProps = {
 }
 
 export const RadioGroup = ({options, onChange, value, labelText}: RadioGroupProps) => {
-    console.log(options)
   const [selectedIndex, setSelectedIndex] = useState<number | undefined>(value);
   function onSelect(index: number) {
     setSelectedIndex(index);
