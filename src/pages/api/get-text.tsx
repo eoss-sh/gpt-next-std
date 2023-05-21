@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   if (typeof req.body.prompt === "string") {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: req.body.prompt,
+      prompt: `Dies ist ein Kommentar zu einem Artikel zum Thema künstliche Intelligenz: ${req.body.prompt}. Bitte schreibe den KOmmentar um, optiere diesen und ergänze ihn mit hilfreichen Infos. Der Kommentar soll ${req.body.stil} geschrieben sein.}`,
       temperature: 0,
       max_tokens: 1000
     })
