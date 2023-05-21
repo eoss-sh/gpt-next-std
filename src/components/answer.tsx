@@ -39,9 +39,9 @@ return (
       <Textarea onChange={handleChange} rows={10} value={prompt} />
       <RadioGroup 
         options={[
-          <h3>Normal</h3>,
-          <h3>Witzig</h3>,
-          <h3>Frech</h3>,
+          <h3 key={1}>Normal</h3>,
+          <h3 key={2}>Witzig</h3>,
+          <h3 key={3}>Frech</h3>,
         ]} 
         labelText="Stil der Antwort" 
         onChange={(index) => {

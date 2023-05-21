@@ -60,7 +60,7 @@ const Avatar = () => {
           <>
             <p>Das wärs, wenn dir dein Bild nicht gefällt, kannst du gerne ein neues erstellen.</p>
             <div className="flex flex-col items-center my-10 gap-4">
-             <img src={answer} className="rounded-full w-20" />
+             <img src={answer} className="rounded-full w-40" />
              <h3 className="text-center">{name}</h3>
             </div>
           </>

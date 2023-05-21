@@ -4,7 +4,7 @@ const configuration = new Configuration({
 })
 const openai = new OpenAIApi(configuration)
 
-export default async function handler(req, res) {
+export default async function handler(req: any, res: any) {
   try {
   if (typeof req.body.prompt === "string") {
     const response = await openai.createImage({
