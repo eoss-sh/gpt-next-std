@@ -43,7 +43,7 @@ return (
           <h3 key={2}>Witzig</h3>,
           <h3 key={3}>Frech</h3>,
         ]} 
-        labelText="Stil der Antwort" 
+        labelText="Stil der Antwort"
         onChange={(index) => {
           if (index === 0) {
             setStil("normal")
