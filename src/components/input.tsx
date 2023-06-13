@@ -29,7 +29,7 @@ export const Input: FC<InputProps> = ({ label, type, id, placeholder, onChange, 
           </div>
         )}
         <input
-          className="w-full bg-slate-50 p-2 text-[20px] text-slate-700 font placeholder:text-slate-500 rounded outline outline-1 outline-slate-200 hover:outline-yellow-600 hover:outline-1 focus:outline-2 focus:outline-yellow-600"
+          className="w-full bg-grey p-2 text-sm text-slate-700 font placeholder:text-slate-500 rounded outline outline-1 outline-grey hover:outline-yellow hover:outline-1 focus:outline-2 focus:outline-yellow"
           id={id}
           type={showPassword && type === 'password' ? 'text' : type}
           placeholder={placeholder}

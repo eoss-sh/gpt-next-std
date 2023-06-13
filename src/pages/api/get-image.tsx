@@ -8,7 +8,7 @@ export default async function handler(req: any, res: any) {
   try {
   if (typeof req.body.prompt === "string") {
     const response = await openai.createImage({
-      prompt: `Erstelle ein Profilbild für einen User, welcher einen Kommentar für einen Blog schreibt und sich selber als ${req.body.prompt} beschreibt. Das Bild soll im Style eines gemoetrisch abstrakten Gemäldes sein.`,
+      prompt: `Erstelle ein Profilbild für einen User, welcher einen Kommentar für einen Blog schreibt und sich selber als ${req.body.prompt} beschreibt. Das Bild soll im Style eines romantisch realisitschm Gemäldes sein.`,
       n: 1,
       size: "256x256"
     })

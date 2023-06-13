@@ -12,7 +12,7 @@ export type LabelProps = {
 }
 
 const classes = {
-  labelBase: 'block text-slate-700 font-semibold',
+  labelBase: 'block text-darkgrey font-semibold',
   labelSize: (type: LabelType) => {
     const sizeaMap = {
       [LabelType.M]: 'text-sm mb-1',

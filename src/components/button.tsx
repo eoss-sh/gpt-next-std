@@ -1,5 +1,5 @@
 export const Button = ({ children, ...props }: any) => {
     return (
-        <button className="rounded-full bg-yellow-400 px-8" {...props}>{children}</button>
+        <button className="rounded-full px-8 py-2 text-bluegrey bg-yellow hover:text-darkgrey" {...props}>{children}</button>
     )
 }

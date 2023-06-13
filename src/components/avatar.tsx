@@ -46,7 +46,6 @@ const Avatar = () => {
       </form>
 
       <div>
-      <h3 className="mt-8">{`Hallo, ${name}`}</h3>
       {isLoading && (
         <div>
           <p>Schön, dass du da bist. Die KI erstellt gerade dein Profilbild, ein Moment bitte.</p>
