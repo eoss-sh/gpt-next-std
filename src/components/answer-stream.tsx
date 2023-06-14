@@ -3,13 +3,14 @@ import { createParser } from 'eventsource-parser';
 import { Input } from './input';
 import { Button } from './button';
 
+type AnswerText = string | undefined;
 
 export default function AnswerStream() {
-  const [text, setText] = useState();
+  const [text, setText] = useState<AnswerText>();
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  async function handleOnGenerateText(e) {
+  async function handleOnGenerateText(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     setIsLoading(true);
@@ -34,7 +35,7 @@ export default function AnswerStream() {
           const data = JSON.parse(event.data);
           data.choices
             .filter(({ delta }: any) => !!delta.content)
-            .forEach(({ delta }): any => {
+            .forEach(({ delta }: any): any => {
               setText(prev => {
                 return `${prev || ''}${delta.content}`;
               })
@@ -48,7 +49,7 @@ export default function AnswerStream() {
     const parser = createParser(onParse)
 
     while (true) {
-      const { value, done } = await reader?.read();
+      const { value, done } = await reader?.read() as any;
       const dataString = decoder.decode(value);
       if ( done || dataString.includes('[DONE]') ) break;
       parser.feed(dataString);
