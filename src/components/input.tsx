@@ -3,7 +3,7 @@ import { Label, LabelType } from './label'
 
 export type InputProps = {
   type: 'text' | 'password' | 'email'
-  label: string
+  label?: string
   id: string
   placeholder?: string
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
@@ -29,7 +29,7 @@ export const Input: FC<InputProps> = ({ label, type, id, placeholder, onChange, 
           </div>
         )}
         <input
-          className="w-full bg-grey p-2 text-sm text-slate-700 font placeholder:text-slate-500 rounded outline outline-1 outline-grey hover:outline-yellow hover:outline-1 focus:outline-2 focus:outline-yellow"
+          className="w-full bg-white p-2 text-sm text-slate-700 font placeholder:text-slate-500 rounded-full outline outline-1 outline-grey hover:outline-yellow hover:outline-1 focus:outline-2 focus:outline-yellow"
           id={id}
           type={showPassword && type === 'password' ? 'text' : type}
           placeholder={placeholder}

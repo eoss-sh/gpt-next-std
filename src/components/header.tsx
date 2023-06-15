@@ -16,8 +16,8 @@ export type HeaderProps = {
 const classes = {
   header: (style: HeaderType) => {
     const classesMap = {
-      [HeaderType.h1]: 'text-4xl font-bold text-current',
-      [HeaderType.h2]: 'text-3xl font-bold text-current',
+      [HeaderType.h1]: 'text-4xl font-bold text-current mb-4',
+      [HeaderType.h2]: 'text-3xl font-bold text-current mb-4',
       [HeaderType.h3]: 'text-2xl font-semibold text-current',
       [HeaderType.h4]: 'text-xl font-semibold text-current'
     }

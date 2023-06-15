@@ -64,13 +64,13 @@ export default function AnswerStream() {
     <form onSubmit={handleOnGenerateText} className='relative'>
     <Input 
         type="text" 
-        label='Frage'
         id='prompt'
         name='prompt'
         onChange={(e) => setInput(e.target.value)}
         value={input}
+        placeholder='Frage eingeben'
     />
-    <Button>Antwort erstellen</Button>
+    <Button>Antwort erhalten</Button>
     </form>
     
     </div>
