@@ -61,7 +61,7 @@ export default function AnswerStream() {
   return (
     <div className='flex flex-col justify-between h-full'>
     <p>{text}</p>
-    <form onSubmit={handleOnGenerateText} className='relative'>
+    <form onSubmit={handleOnGenerateText} className=''>
     <Input 
         type="text" 
         id='prompt'
