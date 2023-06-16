@@ -48,7 +48,7 @@ export default function MyPage(props: any) {
                                 </g>
                               </g>
                             </svg>
-        </div><p>Sie sprechen mit dem eoss chat</p>
+        </div><p className="text-white">Sie sprechen mit dem eoss chat</p>
 
        </div>
         <p>Stelle mir eine Frage</p>
