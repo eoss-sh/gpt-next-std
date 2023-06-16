@@ -6,7 +6,6 @@ import logo from '/public/eoss_logo.png'
 import { Button } from "@/components/button"
 
 export default function MyPage(props: any) {
-  console.log("props", props.prompt)
 
   return (
     <>
@@ -51,7 +50,6 @@ export default function MyPage(props: any) {
         </div><p className="text-white">Sie sprechen mit dem eoss chat</p>
 
        </div>
-        <p>Stelle mir eine Frage</p>
           <AnswerStream />
         </div>
       </section>

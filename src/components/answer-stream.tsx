@@ -6,7 +6,7 @@ import { Button } from './button';
 type AnswerText = string | undefined;
 
 export default function AnswerStream() {
-  const [text, setText] = useState<AnswerText>();
+  const [text, setText] = useState<AnswerText>('bitte stelle mir eine Frage');
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
