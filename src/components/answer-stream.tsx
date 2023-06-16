@@ -61,7 +61,8 @@ export default function AnswerStream() {
   return (
     <div className='flex flex-col justify-between h-full'>
     <p>{text}</p>
-    <form onSubmit={handleOnGenerateText}>
+    
+    <form onSubmit={handleOnGenerateText} className='absolute bottom-0 mt-[30px] mr-[-33px] ml-[-33px] w-full bg-lightyellow p-[10px] rounded-b-3xl'>
     <Input 
         type="text" 
         id='prompt'
@@ -70,8 +71,10 @@ export default function AnswerStream() {
         value={input}
         placeholder='Frage eingeben'
     />
-    <Button>Antwort erhalten</Button>
+   <Button>Antwort erhalten</Button>
     </form>
+
+    
     
     </div>
   )
