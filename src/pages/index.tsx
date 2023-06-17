@@ -3,9 +3,10 @@ import {Header, HeaderType} from "@/components/header"
 import {supabase} from '../../supabaseClient'
 import Image from 'next/image'
 import logo from '/public/eoss_logo.png'
-import { Button } from "@/components/button"
+import Prompt, {PromptProp} from '@/components/prompt'
 
-export default function MyPage(props: any) {
+
+export default function MyPage({prompts}: {prompts: PromptProp[]}) {
 
   return (
     <>
@@ -32,22 +33,22 @@ export default function MyPage(props: any) {
                                   <path d="M 26.51975250244141 110.0207977294922 L 37.13327789306641 97.03099822998047 L 123.0003051757812 97.03099822998047 C 129.0657348632812 97.03099822998047 134.0003051757812 92.09642028808594 134.0003051757812 86.03099822998047 L 134.0003051757812 17.99999809265137 C 134.0003051757812 11.93457317352295 129.0657348632812 6.999997615814209 123.0003051757812 6.999997615814209 L 18.00000190734863 6.999997615814209 C 11.93457794189453 6.999997615814209 7.000002384185791 11.93457317352295 7.000002384185791 17.99999809265137 L 7.000002384185791 86.03099822998047 C 7.000002384185791 92.09642028808594 11.93457794189453 97.03099822998047 18.00000190734863 97.03099822998047 L 25.78210258483887 97.03099822998047 L 26.51975250244141 110.0207977294922 M 20.5515022277832 128.3885955810547 L 19.16832733154297 104.0309982299805 L 18.00000190734863 104.0309982299805 C 8.058602333068848 104.0309982299805 2.587890548966243e-06 95.97149658203125 2.587890548966243e-06 86.03099822998047 L 2.587890548966243e-06 17.99999809265137 C 2.587890548966243e-06 8.058597564697266 8.058602333068848 -2.209472768299747e-06 18.00000190734863 -2.209472768299747e-06 L 123.0003051757812 -2.209472768299747e-06 C 132.9416961669922 -2.209472768299747e-06 141.0003051757812 8.058597564697266 141.0003051757812 17.99999809265137 L 141.0003051757812 86.03099822998047 C 141.0003051757812 95.97149658203125 132.9416961669922 104.0309982299805 123.0003051757812 104.0309982299805 L 40.45330429077148 104.0309982299805 L 20.5515022277832 128.3885955810547 Z" stroke="none" fill="#fee200"/>
                                 </g>
                                 <g id="Gruppe_3" data-name="Gruppe 3" transform="translate(1 -6)">
-                                  <g id="Ellipse_4" data-name="Ellipse 4" transform="translate(1457 287)" fill="#fff" stroke="#fee200" stroke-width="7">
+                                  <g id="Ellipse_4" data-name="Ellipse 4" transform="translate(1457 287)" fill="#fff" stroke="#fee200" strokeWidth="7">
                                     <circle cx="10" cy="10" r="10" stroke="none"/>
                                     <circle cx="10" cy="10" r="6.5" fill="none"/>
                                   </g>
-                                  <g id="Ellipse_5" data-name="Ellipse 5" transform="translate(1507 287)" fill="#fff" stroke="#fee200" stroke-width="7">
+                                  <g id="Ellipse_5" data-name="Ellipse 5" transform="translate(1507 287)" fill="#fff" stroke="#fee200" strokeWidth="7">
                                     <circle cx="10" cy="10" r="10" stroke="none"/>
                                     <circle cx="10" cy="10" r="6.5" fill="none"/>
                                   </g>
-                                  <g id="Ellipse_6" data-name="Ellipse 6" transform="translate(1482 287)" fill="#fff" stroke="#fee200" stroke-width="7">
+                                  <g id="Ellipse_6" data-name="Ellipse 6" transform="translate(1482 287)" fill="#fff" stroke="#fee200" strokeWidth="7">
                                     <circle cx="10" cy="10" r="10" stroke="none"/>
                                     <circle cx="10" cy="10" r="6.5" fill="none"/>
                                   </g>
                                 </g>
                               </g>
                             </svg>
-        </div><p className="text-white">Sie sprechen mit dem eoss chat</p>
+        </div><p className="text-black">Sie sprechen mit dem eoss-Chat</p>
 
        </div>
           <AnswerStream />
@@ -56,25 +57,23 @@ export default function MyPage(props: any) {
       </div>
       <section className="hidden h-1/5 mt-8 ml-16 mr-16 lg:block">
         <Header type={HeaderType.h2} style={HeaderType.h2}>Andere User haben sich dafür interessiert.</Header>
-        <div className="grid grid-cols-5 gap-16 h-4/5">
-          <div className="bg-lightyellow rounded-2xl backdrop-filter backdrop-blur-sm"></div>
-          <div className="bg-lightyellow rounded-2xl backdrop-filter backdrop-blur-sm"></div>
-          <div className="bg-lightyellow rounded-2xl backdrop-filter backdrop-blur-sm"></div>
-          <div className="bg-lightyellow rounded-2xl backdrop-filter backdrop-blur-sm"></div>
-          <div className="bg-lightyellow rounded-2xl backdrop-filter backdrop-blur-sm"></div>
-        </div>
+        {
+          prompts.map((prompt) => {
+            return <Prompt key={prompt.id} {...prompt}/>
+          })
+        }
+         
     </section>
   </>
   )
 }
 
 export async function getServerSideProps() {
-  let {data: prompt, error} = await supabase.from('prompt').select('*')
-  console.log(error, prompt)  
+  let {data: prompts} = await supabase.from('prompt').select('*')
 
   return {
       props: {
-          prompt
+          prompts
       }
 }
 }

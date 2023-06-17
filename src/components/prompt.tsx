@@ -1,29 +1,21 @@
 import React, {FC} from 'react'
 import {supabase} from '../../supabaseClient'
 
-type PromptProps = {
-    promptText: string
+export type PromptProp = {
+    promptText?: string
     id?: number
     createdAt?: string
-
 }
 
-const Prompt: FC<PromptProps> = (props)  => {
-    console.log("props", props)
+const Prompt: FC<PromptProp> = (prompt)  => {
   return (
-    <div>Promptconst</div>
+    <div className="grid grid-cols-5 gap-16 h-4/5">
+      <div className="bg-lightyellow rounded-2xl backdrop-filter backdrop-blur-sm p-8">
+        <p>{`"${prompt.promptText}?"`}</p>
+      </div>
+    </div>
 )
   }
 
-
-  export async function getServerSideProps() {
-    let {data: prompt, error} = await supabase.from('prompt').select('promptText')
-    console.log(error, prompt)
-    return {
-        props: {
-            prompt
-        }
-  }
-}
 
   export default Prompt;

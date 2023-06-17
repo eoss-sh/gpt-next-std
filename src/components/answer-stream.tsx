@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import { createParser } from 'eventsource-parser';
 import { Input } from './input';
-import { Button } from './button';
+import { SpinnerRoundOutlined } from 'spinners-react';
 
 type AnswerText = string | undefined;
 
 export default function AnswerStream() {
-  const [text, setText] = useState<AnswerText>('bitte stelle mir eine Frage');
+  const [text, setText] = useState<AnswerText>();
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  async function handleOnGenerateText(e: React.FormEvent<HTMLFormElement>) {
+  async function handleOnGenerateText(e: any) {
     e.preventDefault();
-
     setIsLoading(true);
     setText(undefined);
 
@@ -56,26 +55,37 @@ export default function AnswerStream() {
     }
 
     setIsLoading(false);
+    setInput('')
+    
   }
 
   return (
-    <div className='flex flex-col justify-between h-full'>
+    <div className='flex flex-col justify-between h-full pb-12'>
+    {
+      isLoading && !text && (
+        <div className='flex justify-center items-center'>Antwort wird erstellt <SpinnerRoundOutlined color='#fee200' /></div>
+      )
+    }
     <p>{text}</p>
     
     <form onSubmit={handleOnGenerateText} className='absolute bottom-0 mt-[30px] mr-[-33px] ml-[-33px] w-full bg-lightyellow p-[10px] rounded-b-3xl'>
-    <Input 
-        type="text" 
-        id='prompt'
-        name='prompt'
-        onChange={(e) => setInput(e.target.value)}
-        value={input}
-        placeholder='Frage eingeben'
-    />
-   <Button>Antwort erhalten</Button>
+    <div className="relative">
+      <div
+        className="absolute flex items-center right-0 inset-y-0 pr-3 cursor-pointer"
+        onClick={handleOnGenerateText}
+      >
+          <svg className='h-8 w-8' viewBox="0 0 24 24" fill="#f1d3022e" xmlns="http://www.w3.org/2000/svg" stroke="#f1d3022e"><g id="SVGRepo_bgCarrier" strokeWidth="2"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M6 12L3 21L21 12L3 3L6 12ZM6 12L12 12" stroke="#fee200" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></g></svg>
+      </div>
+      <Input 
+          type="text" 
+          id='prompt'
+          name='prompt'
+          onChange={(e) => setInput(e.target.value)}
+          value={input}
+          placeholder='Frage eingeben'
+      />
+    </div>
     </form>
-
-    
-    
     </div>
   )
 }

@@ -12,7 +12,7 @@ export type InputProps = {
 
 }
 
-export const Input: FC<InputProps> = ({ label, type, id, placeholder, onChange, name }) => {
+export const Input: FC<InputProps> = ({ label, type, id, placeholder, onChange, name, value }) => {
   const [showPassword, setShowPassword] = React.useState(false)
 
   return (
@@ -20,14 +20,6 @@ export const Input: FC<InputProps> = ({ label, type, id, placeholder, onChange, 
       <Label type={LabelType.M} id={id}>
         {label}
       </Label>
-      <div className="relative">
-        {type === 'password' && (
-          <div
-            className="absolute flex items-center right-0 inset-y-0 pr-3"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-          </div>
-        )}
         <input
           className="w-full bg-white p-2 text-sm text-slate-700 font placeholder:text-slate-500 rounded-full outline outline-1 outline-grey hover:outline-yellow hover:outline-1 focus:outline-2 focus:outline-yellow"
           id={id}
@@ -35,8 +27,8 @@ export const Input: FC<InputProps> = ({ label, type, id, placeholder, onChange, 
           placeholder={placeholder}
           onChange={onChange}
           name={name}
+          value={value}
         />
       </div>
-    </div>
   )
 }
