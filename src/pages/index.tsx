@@ -57,12 +57,13 @@ export default function MyPage({prompts}: {prompts: PromptProp[]}) {
       </div>
       <section className="hidden h-1/5 mt-8 ml-16 mr-16 lg:block">
         <Header type={HeaderType.h2} style={HeaderType.h2}>Andere User haben sich dafür interessiert.</Header>
-        {
-          prompts.map((prompt) => {
-            return <Prompt key={prompt.id} {...prompt}/>
-          })
-        }
-         
+        <div className="grid grid-cols-5 gap-16 h-4/5">
+          {
+            prompts.map((prompt) => {
+              return <Prompt key={prompt.id} {...prompt}/>
+            })
+          }
+        </div>
     </section>
   </>
   )
