@@ -4,6 +4,7 @@ import {supabase} from '../../supabaseClient'
 import Image from 'next/image'
 import logo from '/public/eoss_logo.png'
 import Prompt, {PromptProp} from '@/components/prompt'
+import { count } from "console"
 
 
 export default function MyPage({prompts}: {prompts: PromptProp[]}) {
@@ -70,7 +71,7 @@ export default function MyPage({prompts}: {prompts: PromptProp[]}) {
 }
 
 export async function getServerSideProps() {
-  let {data: prompts} = await supabase.from('prompt').select('*')
+  let {data: prompts} = await supabase.from('prompt').select('*').limit(5)
 
   return {
       props: {
