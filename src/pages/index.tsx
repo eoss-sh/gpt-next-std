@@ -16,7 +16,7 @@ export default function MyPage({prompts}: {prompts: PromptProp[]}) {
         <Image src={logo} alt="" height={40}  />
         <Header type={HeaderType.h1} style={HeaderType.h1}>Unsere KI beantwortet Ihre Fragen.</Header>
         <p className="mb-4">Haben Sie Fragen zu den Themen Online-Marketing, Web-Design und Web-Entwicklung, welche unsere KI nicht ausreichend beantworten konnte?</p>
-       <a className="text-yellow no-underline hover:underline duration-300 h-[3px]" href="https://eoss.ch/kontakt/">Jetzt Frage stellen</a>
+       <a className="text-black text-lg underline decoration-yellow decoration-4" href="https://eoss.ch/kontakt/">Jetzt Frage stellen</a>
       </section>
       <section className="pr-16 pl-16 lg:mt-0 mt-24 lg:pr-0 lg:pl-0 w-full flex items-center h-full bg-lightyellow rounded-t-3xl">
         <div className='bg-grey rounded-3xl drop-shadow-md mt-7 w-full lg:min-w-[500px] min-h-[75%] relative bottom-32 lg:bottom-0 lg:-ml-16 p-8 2xl:w-5/6'>
@@ -71,7 +71,7 @@ export default function MyPage({prompts}: {prompts: PromptProp[]}) {
 }
 
 export async function getServerSideProps() {
-  let {data: prompts} = await supabase.from('prompt').select('*').limit(5)
+  let {data: prompts} = await supabase.from('prompt').select('*').order('created_at', {ascending: false}).limit(5)
 
   return {
       props: {

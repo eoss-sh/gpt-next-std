@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { createParser } from 'eventsource-parser';
 import { Input } from './input';
 import { SpinnerRoundOutlined } from 'spinners-react';
+import { supabase } from '../../supabaseClient';
 
 type AnswerText = string | undefined;
 
@@ -56,7 +57,7 @@ export default function AnswerStream() {
 
     setIsLoading(false);
     setInput('')
-    
+    const {data, error} = await supabase.from('prompt').insert([{promptText: input}])
   }
 
   return (
